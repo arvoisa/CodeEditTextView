@@ -73,7 +73,6 @@ extension TextLayoutManager {
         // tree modifications caused by this method are atomic, so macOS won't call `layout` while we're already doing
         // that
         CATransaction.begin()
-        layoutLock.lock()
 
         let minY = max(visibleRect.minY - verticalLayoutPadding, 0)
         let maxY = max(visibleRect.maxY + verticalLayoutPadding, 0)
@@ -148,7 +147,6 @@ extension TextLayoutManager {
         needsLayout = false
 
         // Commit the view tree changes we just made.
-        layoutLock.unlock()
         CATransaction.commit()
 
         if maxFoundLineWidth > maxLineWidth {

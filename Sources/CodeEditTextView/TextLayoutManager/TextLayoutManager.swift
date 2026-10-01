@@ -90,10 +90,6 @@ public class TextLayoutManager: NSObject {
         transactionCounter > 0
     }
 
-    /// Guard variable for an assertion check in debug builds.
-    /// Ensures that layout calls are not overlapping, potentially causing layout issues.
-    var layoutLock: NSLock = NSLock()
-
     weak var layoutView: NSView?
 
     /// The calculated maximum width of all laid out lines.
